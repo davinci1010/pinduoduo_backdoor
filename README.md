@@ -2,7 +2,7 @@
 
 参考「 深蓝洞察 」的文章：https://mp.weixin.qq.com/s/P_EYQxOEupqdU0BJMRqWsw
 （Bundle 风水 - Android Parcel 序列化与反序列化不匹配系列漏洞，实现 0day/Nday 攻击，从而绕过系统校验，获取系统级 StartAnyWhere 能力）
-
+manwe脱壳机: https://github.com/davinci1012/pinduoduo_backdoor_unpacker
 
 复现流程如下：  
 下载3月5日前更新的（6.50版本前）的拼多多apk，如6.49版本：  
