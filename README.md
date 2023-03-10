@@ -163,3 +163,13 @@ Public static Bundle makeBundleForSamsungSinceP(Intent intent){
   https://commfile.pddpic.com/sdfile/vivo/d643e0f9a68342bc8403a69e7ee877a7.dex  
   https://commfile.pddpic.com/sdfile/xm/0fc0e98ac2e54bc29401efaddfc8ad7f.dex  
   https://commfile.pddpic.com/sdfile/xm/95cd95ab4d694ad8bdf49f07e3599fb3.dex
+
+## VMP
+
+看到有大佬问VMP怎么脱，分析下来PDD的恶意代码是有两套VMP进行保护（manwe、nvwa），有的是manwe保护，有的是nvwa保护，都是单个保护，不会保护两次。VMP文件以.bin结尾，PDD安装之后，会释放到files/.components里，文件在vmp_src中，然后再拷到files/bot/目录下面。有的是自带直接释放，有的是从远端拉取。manwe的解释器在com.xunmeng.manwe.*里面，nvwa在libnvwavm-lib.so里。
+
+manwe逆向下来，是JVM on Java设计的一套VMP，constant pool设计与原始JVM有一些不同，同时多个class被压缩在一个bin文件中，opcode基本一一对应。nvwa为JVM转native的一套VMP，Dalvik opcode对应到自设计的一套native vmp上。VMP代码通过PluginBridge类，与主App中的interface进行交互。
+
+脱壳的话，manvwa、nvwa都是把opcode一一重写回去就好了，注意跳转指令之类的offset需要调整，constant pool里面一些Ref需要调整。utf16string编码是颠倒的，对调回去就可以恢复出字符串。class都转化成了string引用
+
+除了原po分析的AliveBaseAbility,各位大佬也可以关注下bot/alive_security_biz_plugin/mw1.bin(AliveStrategyBizComp)，里面的东西更劲爆
