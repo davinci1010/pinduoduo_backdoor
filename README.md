@@ -1,3 +1,7 @@
+
+ # 详细分析报告 Detailed Analysis Report
+
+English version see [Report](https://github.com/davincifans101/pinduoduo_backdoor_detailed_report/blob/main/report_en.pdf), 中文分析报告见[分析报告](https://github.com/davincifans101/pinduoduo_backdoor_detailed_report/blob/main/report_cn.pdf)
 # 拼多多apk内嵌提权代码，及动态下发dex分析
 
 参考「 深蓝洞察 」的文章：https://mp.weixin.qq.com/s/P_EYQxOEupqdU0BJMRqWsw
